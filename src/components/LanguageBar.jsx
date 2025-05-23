@@ -17,7 +17,7 @@ export default function LanguageBar() {
                     </button>
 
                     {isOpen && (
-                        <div className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-md py-1 z-50">
+                        <div className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-md py-1 z-150">
                             <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">English</button>
                         </div>
                     )}

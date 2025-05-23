@@ -8,6 +8,7 @@ import FarmingSolutions from '../components/HomePage/FarmingSolutions'
 import JDLinkAppSection from '../components/HomePage/JDLinkAppSection'
 import ProductionSystemSolutions from '../components/HomePage/ProductionSystemSolutions'
 import FAQSection from '../components/HomePage/FAQSection'
+import AboutHero from '../components/AboutPage/AboutHero'
 
 const Home = () => {
     return (
@@ -16,7 +17,8 @@ const Home = () => {
         <NavBar/>
         <HeroSection/>
         <AllProducts/>
-        <FarmingSolutions/>
+        {/* <FarmingSolutions/> */}
+        <AboutHero/>
         <JDLinkAppSection/>
         <ProductionSystemSolutions/>
         <FAQSection/>
