@@ -6,6 +6,7 @@ import Contact from './pages/Contact'
 import Products from './pages/Products'
 import TractorCategory from './pages/TractorCategory' 
 import TractorModel from './pages/TractorModel'
+import DealerLocator from './pages/DealerLocator'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/products" element={<Products/>} />
         <Route path="/tractor-category/:seriesId" element={<TractorCategory/>} />
         <Route path="/tractor-model/:modelId" element={<TractorModel/>} />
+        <Route path='/dealer-locator' element={<DealerLocator/>} />
       </Routes>
   )
 }

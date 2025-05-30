@@ -5,7 +5,7 @@ import Hero3 from '../../assets/images/hero2.png';
 
 export default function HeroSection() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const heroImages = [Hero1, Hero2, Hero3];
+    const heroImages = [Hero3, Hero2, Hero1];
     
     useEffect(() => {
         // Set up an interval to change the image every 5 seconds
@@ -42,7 +42,7 @@ export default function HeroSection() {
             <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center">
                 <div className="max-w-lg">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-                        John Deere Tractors
+                        Sri Lakshmi Tractors Tech
                     </h1>
                     <p className="text-lg md:text-xl text-white mb-6">
                         Power Meets Innovation

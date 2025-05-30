@@ -44,7 +44,7 @@ const ContactFormSection = () => {
                                 <Phone className="text-green-700 mr-2" size={20} />
                                 <h3 className="font-semibold">Toll-Free Number (India)</h3>
                             </div>
-                            <p className="text-gray-600 ml-7">1800-XXX-XXXX</p>
+                            <p className="text-gray-600 ml-7">08172 256046</p>
                         </div>
 
                         <div className="mb-8">
@@ -52,7 +52,7 @@ const ContactFormSection = () => {
                                 <Clock className="text-green-700 mr-2" size={20} />
                                 <h3 className="font-semibold">Availability</h3>
                             </div>
-                            <p className="text-gray-600 ml-7">Monday to Friday, 9:00 AM to 5:30 PM</p>
+                            <p className="text-gray-600 ml-7">Monday to Saturday, 9:00 AM to 6:00 PM</p>
                         </div>
 
                         <div className="mb-8">
@@ -60,7 +60,7 @@ const ContactFormSection = () => {
                                 <Mail className="text-green-700 mr-2" size={20} />
                                 <h3 className="font-semibold">Email</h3>
                             </div>
-                            <p className="text-gray-600 ml-7">support@yourcompany.com</p>
+                            <p className="text-gray-600 ml-7">lakshmitractortech@gmail.com</p>
                         </div>
                     </div>
 

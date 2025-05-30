@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Menu, X, ChevronDown, Home, MapPin, Phone, DollarSign, MessageCircle } from 'lucide-react';
+import { Search, Menu, X, ChevronDown, Home, MapPin, Phone, IndianRupee, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import DSeries from '../assets/images/d_series.png';
@@ -58,10 +58,10 @@ export default function NavBar() {
     };
 
     const implementsDropdownItems = [
-        { name: 'Plows', href: '/implements/plows' },
-        { name: 'Cultivators', href: '/implements/cultivators' },
-        { name: 'Harvesters', href: '/implements/harvesters' },
-        { name: 'Seeders', href: '/implements/seeders' },
+        { name: 'Plows', href: '/products' },
+        { name: 'Cultivators', href: '/products' },
+        { name: 'Harvesters', href: '/products' },
+        { name: 'Seeders', href: '/products' },
     ];
 
     const handleDropdownToggle = (dropdown) => {
@@ -147,15 +147,11 @@ export default function NavBar() {
                                 </Link>
                             </div>
 
-                            {/* Mobile Navigation Items */}
-                            <div className="flex lg:hidden items-center space-x-4">
-                                <button
-                                    className="flex items-center font-medium text-gray-800 hover:text-green-700 py-2 focus:outline-none"
-                                    onClick={() => handleDropdownToggle('tractors')}
-                                >
-                                    TRACTORS
-                                    <ChevronDown size={16} className="ml-1" />
-                                </button>
+                            {/* Mobile Company Name */}
+                            <div className="flex lg:hidden items-center">
+                                <span className="text-sm font-medium text-gray-800">
+                                    Sri Laxmi Tractors Tech
+                                </span>
                             </div>
                         </div>
 
@@ -165,19 +161,19 @@ export default function NavBar() {
                                 <Home size={16} className="mr-1" />
                                 Home
                             </Link>
-                            <Link to="/dealers" className="flex items-center text-sm text-gray-600 hover:text-green-700">
+                            <Link to="/dealer-locator" className="flex items-center text-sm text-gray-600 hover:text-green-700">
                                 <MapPin size={16} className="mr-1" />
                                 Dealers
                             </Link>
-                            <Link to="/contact" className="flex items-center text-sm text-gray-600 hover:text-green-700">
+                            <a href="tel:+919901045699" className="flex items-center text-sm text-gray-600 hover:text-green-700">
                                 <Phone size={16} className="mr-1" />
                                 Call Us
-                            </Link>
-                            <Link to="/pricing" className="flex items-center text-sm text-gray-600 hover:text-green-700">
-                                <DollarSign size={16} className="mr-1" />
+                            </a>
+                            <Link to="/products" className="flex items-center text-sm text-gray-600 hover:text-green-700">
+                                <IndianRupee size={16} className="mr-1" />
                                 Get Price
                             </Link>
-                            <Link to="/chat" className="flex items-center text-sm text-gray-600 hover:text-green-700">
+                            <Link to="https://wa.me/+919901045699" className="flex items-center text-sm text-gray-600 hover:text-green-700">
                                 <MessageCircle size={16} className="mr-1" />
                                 Let's Chat
                             </Link>
@@ -208,6 +204,28 @@ export default function NavBar() {
                     {isMenuOpen && (
                         <div className="lg:hidden mt-4">
                             <div className="flex flex-col space-y-2 pb-3 pt-2 border-b border-gray-200">
+                                {/* Tractors Button in Mobile Menu */}
+                                <button
+                                    className="flex items-center justify-between px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-100 focus:outline-none"
+                                    onClick={() => {
+                                        handleDropdownToggle('tractors');
+                                        setIsMenuOpen(false);
+                                    }}
+                                >
+                                    TRACTORS
+                                    <ChevronDown size={16} className="ml-1" />
+                                </button>
+                                <button
+                                    className="flex items-center justify-between px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-100 focus:outline-none"
+                                    onClick={() => {
+                                        handleDropdownToggle('implements');
+                                        setIsMenuOpen(false);
+                                    }}
+                                >
+                                    IMPLEMENTS
+                                    <ChevronDown size={16} className="ml-1" />
+                                </button>
+
                                 <Link to="/aboutus" className="px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-100 block">
                                     About Us
                                 </Link>
@@ -243,8 +261,8 @@ export default function NavBar() {
                                         key={seriesId}
                                         onClick={() => handleSeriesClick(seriesId)}
                                         className={`w-full text-left p-4 rounded-lg border transition-all duration-200 ${selectedSeries === seriesId
-                                                ? 'bg-green-50 border-green-300 text-green-700'
-                                                : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
+                                            ? 'bg-green-50 border-green-300 text-green-700'
+                                            : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
                                             }`}
                                     >
                                         <div className="flex items-center justify-between">
@@ -342,8 +360,8 @@ export default function NavBar() {
                                     key={seriesId}
                                     onClick={() => handleSeriesClick(seriesId)}
                                     className={`w-full text-left p-4 rounded-lg border transition-all duration-200 ${selectedSeries === seriesId
-                                            ? 'bg-green-50 border-green-300 text-green-700'
-                                            : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
+                                        ? 'bg-green-50 border-green-300 text-green-700'
+                                        : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
                                         }`}
                                 >
                                     <div className="flex items-center justify-between">
@@ -409,6 +427,43 @@ export default function NavBar() {
                 </div>
             )}
 
+            {/* Mobile Implements Dropdown - Full screen */}
+            {activeDropdown === 'implements' && (
+                <div className="lg:hidden fixed inset-0 bg-white z-50 overflow-y-auto">
+                    {/* Mobile Header */}
+                    <div className="bg-white border-b border-gray-200 px-4 py-4">
+                        <div className="flex items-center justify-between">
+                            <h2 className="text-xl font-bold text-gray-900">Explore Our Implements</h2>
+                            <button
+                                onClick={() => setActiveDropdown(null)}
+                                className="p-2 hover:bg-gray-100 rounded-full"
+                            >
+                                <X size={24} className="text-gray-600" />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Mobile Implements List */}
+                    <div className="p-4">
+                        <h3 className="font-bold text-gray-800 mb-4 text-lg">
+                            IMPLEMENTS CATEGORIES
+                        </h3>
+                        <div className="space-y-3">
+                            {implementsDropdownItems.map((item, index) => (
+                                <Link
+                                    key={index}
+                                    to={item.href}
+                                    onClick={() => setActiveDropdown(null)}
+                                    className="block p-4 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-green-700 hover:border-green-300 transition-all duration-200"
+                                >
+                                    <span className="font-semibold text-base">{item.name}</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Overlay for closing dropdowns on desktop */}
             {activeDropdown && (
                 <div
@@ -423,33 +478,33 @@ export default function NavBar() {
                 <div className="grid grid-cols-5 py-2">
                     <Link to="/" className="flex flex-col items-center py-2 px-1">
                         <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mb-1 shadow-sm">
-                            <div className="w-4 h-4 bg-white rounded-sm"></div>
+                            <Home size={16} className="text-white" />
                         </div>
                         <span className="text-xs text-gray-600">Home</span>
                     </Link>
 
-                    <Link to="/dealers" className="flex flex-col items-center py-2 px-1">
+                    <Link to="/dealer-locator" className="flex flex-col items-center py-2 px-1">
                         <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mb-1 shadow-sm">
                             <MapPin size={16} className="text-white" />
                         </div>
                         <span className="text-xs text-gray-600">Dealers</span>
                     </Link>
 
-                    <Link to="/contact" className="flex flex-col items-center py-2 px-1">
+                    <a href="tel:+919901045699" className="flex flex-col items-center py-2 px-1">
                         <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mb-1 shadow-sm">
                             <Phone size={16} className="text-white" />
                         </div>
                         <span className="text-xs text-gray-600">Call Us</span>
-                    </Link>
+                    </a>
 
-                    <Link to="/pricing" className="flex flex-col items-center py-2 px-1">
+                    <Link to="/products" className="flex flex-col items-center py-2 px-1">
                         <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mb-1 shadow-sm">
-                            <DollarSign size={16} className="text-white" />
+                            <IndianRupee size={16} className="text-white" />
                         </div>
                         <span className="text-xs text-gray-600">Get Price</span>
                     </Link>
 
-                    <Link to="/chat" className="flex flex-col items-center py-2 px-1">
+                    <Link to="https://wa.me/+919901045699" className="flex flex-col items-center py-2 px-1">
                         <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mb-1 shadow-sm">
                             <MessageCircle size={16} className="text-white" />
                         </div>

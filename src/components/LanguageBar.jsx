@@ -24,9 +24,9 @@ export default function LanguageBar() {
                 </div>
 
                 <div className="flex items-center space-x-6">
-                    <a href="tel:18002095310" className="flex items-center space-x-2 text-sm">
+                    <a href="tel:08172256046" className="flex items-center space-x-2 text-sm">
                         <Phone size={16} />
-                        <span>1800 209 5310</span>
+                        <span>08172 256046</span>
                     </a>
 
                     <a href="/dealer-locator" className="flex items-center space-x-2 text-sm">
