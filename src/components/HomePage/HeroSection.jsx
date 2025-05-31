@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Hero1 from '../../assets/images/hero.png';
 import Hero2 from '../../assets/images/hero1.png';
 import Hero3 from '../../assets/images/hero2.png';
+import Hero4 from '../../assets/images/hero3.jpg';
+import Hero5 from '../../assets/images/hero4.jpg';
 
 export default function HeroSection() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const heroImages = [Hero3, Hero2, Hero1];
+    const heroImages = [Hero2, Hero4, Hero5];
     
     useEffect(() => {
         // Set up an interval to change the image every 5 seconds

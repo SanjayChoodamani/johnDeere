@@ -293,14 +293,14 @@ export default function AllProducts() {
                     </div>
 
                     {/* Bottom Call to Action */}
-                    <div className="text-center mt-12">
+                    {/* <div className="text-center mt-12">
                         <Link
                             to="/products"
                             className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-lg hover:shadow-xl inline-block"
                         >
                             Explore All Products
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

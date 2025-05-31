@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Menu, X, ChevronDown, Home, MapPin, Phone, IndianRupee, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/images/logo.png';
+import Logo from '../assets/images/logo.jpg';
 import DSeries from '../assets/images/d_series.png';
 import ESeries from '../assets/images/e_series.png';
 import MSeries from '../assets/images/5m_series.png';
@@ -148,7 +148,7 @@ export default function NavBar() {
                             </div>
 
                             {/* Mobile Company Name */}
-                            <div className="flex lg:hidden items-center">
+                            <div className="flex mx-[-1.5rem] lg:hidden items-center">
                                 <span className="text-sm font-medium text-gray-800">
                                     Sri Laxmi Tractors Tech
                                 </span>
