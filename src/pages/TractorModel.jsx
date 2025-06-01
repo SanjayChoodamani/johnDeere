@@ -11,6 +11,8 @@ import Speed from '../assets/images/speed.png';
 import Parts from '../assets/images/parts.png';
 import Implements from '../assets/images/implements.png';
 
+import Brochure from '../assets/brochures/tractor.pdf'
+
 const tractorModelsData = {
     'D3540': {
         name: 'D3540',
@@ -19,6 +21,7 @@ const tractorModelsData = {
         hp: '36 HP',
         rpm: '2100',
         description: 'Modern and technologically advanced, the AgroTrak 4036D is a versatile tractor built for superior efficiency. Ideal for all agricultural and haulage applications, it offers long-lasting performance and operational ease at a competitive price.',
+        brochureUrl: Brochure,
         images: [
             T401, T402, T403, T404, T405
         ],

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Search, Menu, X, ChevronDown, Home, MapPin, Phone, IndianRupee, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.jpg';
-import DSeries from '../assets/images/d_series.png';
-import ESeries from '../assets/images/e_series.png';
-import MSeries from '../assets/images/5m_series.png';
-import SpecialtySeries from '../assets/images/special_series.png';
+import DSeries from '../assets/images/d_series.jpg';
+import ESeries from '../assets/images/e_series.jpg';
+import MSeries from '../assets/images/5m_series.jpg';
+import SpecialtySeries from '../assets/images/special_series.jpg';
 
 export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

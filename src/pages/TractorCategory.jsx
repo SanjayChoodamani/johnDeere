@@ -3,10 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import WhyChooseSection from '../components/ProductPage/WhyChooseSection';
 import LanguageBar from '../components/LanguageBar';
 import NavBar from '../components/NavBar';
-import DSeries from '../assets/images/d_series.png';
-import ESeries from '../assets/images/e_series.png';
-import MSeries from '../assets/images/5m_series.png';
-import SpecialtySeries from '../assets/images/special_series.png';
+import DSeries from '../assets/images/d_series.jpg';
+import ESeries from '../assets/images/e_series.jpg';
+import MSeries from '../assets/images/5m_series.jpg';
+import SpecialtySeries from '../assets/images/special_series.jpg';
 import Footer from '../components/Footer';
 
 const tractorSeriesData = {

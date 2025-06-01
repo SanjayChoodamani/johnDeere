@@ -3,10 +3,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import your tractor images for carousel
-import DSeries from '../../assets/images/d_series.png';
-import ESeries from '../../assets/images/e_series.png';
-import MSeries from '../../assets/images/5m_series.png';
-import SpecialtySeries from '../../assets/images/special_series.png';
+import DSeries from '../../assets/images/d_series.jpg';
+import ESeries from '../../assets/images/e_series.jpg';
+import MSeries from '../../assets/images/5m_series.jpg';
+import SpecialtySeries from '../../assets/images/special_series.jpg';
 
 // Import images for the second section
 import Tractor1 from '../../assets/images/tractor1.png';
@@ -166,7 +166,7 @@ export default function AllProducts() {
                         </div>
 
                         {/* Product Info Below Image */}
-                        <div className="text-center mt-[-2rem]">
+                        <div className="text-center mt-[1rem]">
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                 {carouselProducts[currentIndex].name}
                             </h3>
@@ -257,7 +257,7 @@ export default function AllProducts() {
                             </div>
 
                             {/* Mobile Product Info */}
-                            <div className="text-center mt-[-2rem]">
+                            <div className="text-center mt-[0.5rem]">
                                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                                     {carouselProducts[currentIndex].name}
                                 </h3>
