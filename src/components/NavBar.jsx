@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Menu, X, ChevronDown, Home, MapPin, Phone, IndianRupee, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/images/logo.jpg';
+import Logo from '../assets/images/logo.png';
 import DSeries from '../assets/images/d_series.jpg';
 import ESeries from '../assets/images/e_series.jpg';
 import MSeries from '../assets/images/5m_series.jpg';
