@@ -1,48 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import DSeries from '../../assets/images/d_series.jpg';
-import ESeries from '../../assets/images/e_series.jpg';
-import MSeries from '../../assets/images/5m_series.jpg';
-import SpecialtySeries from '../../assets/images/special_series.jpg';
+import AllTractors from '../../assets/data/AllTractors';
 import Gear from '../../assets/images/gear.png';
 
 const TractorsSection = () => {
   const navigate = useNavigate();
   
-  const tractorSeries = [
-    {
-      id: 'd-series',
-      name: 'D Series',
-      image: DSeries,
-      hpRange: '35 HP - 50 HP',
-      description: 'Versatile, multipurpose machines designed for both agricultural and heavy-duty haulage tasks.',
-      applications: ['Agriculture', 'Haulage', 'General Purpose']
-    },
-    {
-      id: 'e-series',
-      name: 'E Series',
-      image: ESeries,
-      hpRange: '50 HP - 75 HP',
-      description: 'Built for power and endurance, ideal for demanding agricultural tasks and large implements.',
-      applications: ['Heavy Duty', 'Large Implements', 'Power Farming']
-    },
-    {
-      id: '5m-series',
-      name: '5M Series',
-      image: MSeries,
-      hpRange: '75 HP - 100 HP',
-      description: 'India\'s largest tractor, equipped with state-of-the-art technology and immense power.',
-      applications: ['Large Scale', 'Advanced Equipment', 'Heavy Duty']
-    },
-    {
-      id: 'specialty-series',
-      name: 'Specialty Series',
-      image: SpecialtySeries,
-      hpRange: '25 HP - 40 HP',
-      description: 'Purpose-built for niche operations like orchard farming and intercultural work.',
-      applications: ['Orchard', 'Intercultural', 'Compact Design']
-    }
-  ];
+  const tractorSeries = AllTractors.getAllSeries();
   
   const handleViewSeries = (seriesId) => {
     navigate(`/tractor-category/${seriesId}`);
@@ -55,7 +19,7 @@ const TractorsSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {tractorSeries.map((series) => (
           <div key={series.id} className="rounded-lg overflow-hidden shadow-md">
-            <div className="h-48 overflow-hidden">
+            <div className="h-50 overflow-hidden">
               <img 
                 src={series.image} 
                 alt={series.name} 

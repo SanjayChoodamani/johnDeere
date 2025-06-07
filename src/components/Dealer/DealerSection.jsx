@@ -7,72 +7,72 @@ const DealerSection = () => {
     const dealers = [
         {
             id: 1,
-            name: "Rajesh Kumar",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Hassan",
-            phone: "+91 9876543210",
+            phone: "+919901045699",
             rating: 4.8,
             experience: "15+ Years",
             specialization: "John Deere Tractors"
         },
         {
             id: 2,
-            name: "Amit Singh",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Arsikere",
-            phone: "+91 9876543211",
+            phone: "+919901045699",
             rating: 4.9,
             experience: "12+ Years",
             specialization: "Agricultural Equipment"
         },
         {
             id: 3,
-            name: "Priya Sharma",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Alur",
-            phone: "+91 9876543212",
+            phone: "+919901045699",
             rating: 4.7,
             experience: "10+ Years",
             specialization: "Tractor Sales & Service"
         },
         {
             id: 4,
-            name: "Suresh Reddy",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Belur",
-            phone: "+91 9876543213",
+            phone: "+919901045699",
             rating: 4.8,
             experience: "18+ Years",
             specialization: "Farm Machinery"
         },
         {
             id: 5,
-            name: "Ravi Patel",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Sakleshpur",
-            phone: "+91 9876543214",
+            phone: "+919901045699",
             rating: 4.6,
             experience: "14+ Years",
             specialization: "Tractor Implements"
         },
         {
             id: 6,
-            name: "Neha Agarwal",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Arkalgud",
-            phone: "+91 9876543215",
+            phone: "+919901045699",
             rating: 4.9,
             experience: "11+ Years",
             specialization: "Customer Support"
         },
         {
             id: 7,
-            name: "Vikram Joshi",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Holenarasipura",
-            phone: "+91 9876543216",
+            phone: "+919901045699",
             rating: 4.7,
             experience: "16+ Years",
             specialization: "Parts & Accessories"
         },
         {
             id: 8,
-            name: "Deepak Gupta",
+            name: "Sri Lakshmi Tractors Tech",
             location: "Channarayapatna",
-            phone: "+91 9876543217",
+            phone: "+919901045699",
             rating: 4.8,
             experience: "13+ Years",
             specialization: "Technical Support"
@@ -149,7 +149,7 @@ const DealerSection = () => {
                                                 <Award size={24} className="text-green-600" />
                                             </div>
                                             <h3 className="text-lg font-bold mb-1">{dealer.name}</h3>
-                                            <p className="text-green-100 text-sm">{dealer.specialization}</p>
+                                            {/* <p className="text-green-100 text-sm">{dealer.specialization}</p> */}
                                         </div>
 
                                         {/* Contact Info */}

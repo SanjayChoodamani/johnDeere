@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search, Menu, X, ChevronDown, Home, MapPin, Phone, IndianRupee, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
-import DSeries from '../assets/images/d_series.jpg';
-import ESeries from '../assets/images/e_series.jpg';
-import MSeries from '../assets/images/5m_series.jpg';
-import SpecialtySeries from '../assets/images/special_series.jpg';
+import AllTractors from '../assets/data/AllTractors';
 
 export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,48 +10,7 @@ export default function NavBar() {
     const [selectedSeries, setSelectedSeries] = useState('d-series');
 
     const tractorData = {
-        series: {
-            'd-series': {
-                name: 'D Series',
-                models: [
-                    { id: 'd-3036e', name: 'John Deere 3036E', hp: '36 HP', image: DSeries },
-                    { id: 'd-3042d', name: 'John Deere 3042D', hp: '42 HP', image: DSeries },
-                    { id: 'd-3046r', name: 'John Deere 3046R', hp: '46 HP', image: DSeries },
-                    { id: 'd-5050d', name: 'John Deere 5050D', hp: '50 HP', image: DSeries },
-                    { id: 'd-3036e', name: 'John Deere 3036E', hp: '36 HP', image: DSeries },
-                    { id: 'd-3042d', name: 'John Deere 3042D', hp: '42 HP', image: DSeries },
-                    { id: 'd-3046r', name: 'John Deere 3046R', hp: '46 HP', image: DSeries },
-                    { id: 'd-5050d', name: 'John Deere 5050D', hp: '50 HP', image: DSeries }
-                ]
-            },
-            'e-series': {
-                name: 'E Series',
-                models: [
-                    { id: 'e-5055e', name: 'John Deere 5055E', hp: '55 HP', image: ESeries },
-                    { id: 'e-5065e', name: 'John Deere 5065E', hp: '65 HP', image: ESeries },
-                    { id: 'e-5075e', name: 'John Deere 5075E', hp: '75 HP', image: ESeries },
-                    { id: 'e-5310', name: 'John Deere 5310', hp: '75 HP', image: ESeries }
-                ]
-            },
-            '5m-series': {
-                name: '5M Series',
-                models: [
-                    { id: '5m-5075m', name: 'John Deere 5075M', hp: '75 HP', image: MSeries },
-                    { id: '5m-5090m', name: 'John Deere 5090M', hp: '90 HP', image: MSeries },
-                    { id: '5m-5105m', name: 'John Deere 5105M', hp: '105 HP', image: MSeries },
-                    { id: '5m-5120m', name: 'John Deere 5120M', hp: '120 HP', image: MSeries }
-                ]
-            },
-            'specialty-series': {
-                name: 'Specialty Series',
-                models: [
-                    { id: 'sp-3028en', name: 'John Deere 3028EN', hp: '28 HP', image: SpecialtySeries },
-                    { id: 'sp-3033r', name: 'John Deere 3033R', hp: '33 HP', image: SpecialtySeries },
-                    { id: 'sp-3038r', name: 'John Deere 3038R', hp: '38 HP', image: SpecialtySeries },
-                    { id: 'sp-4049r', name: 'John Deere 4049R', hp: '49 HP', image: SpecialtySeries }
-                ]
-            }
-        }
+        series: AllTractors.series
     };
 
     const implementsDropdownItems = [
@@ -150,7 +106,7 @@ export default function NavBar() {
                             {/* Mobile Company Name */}
                             <div className="flex mx-[-1.5rem] lg:hidden items-center">
                                 <span className="text-sm font-medium text-gray-800">
-                                    Sri Laxmi Tractors Tech
+                                    Sri Lakshmi Tractors Tech
                                 </span>
                             </div>
                         </div>

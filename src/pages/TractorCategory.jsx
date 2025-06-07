@@ -3,59 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import WhyChooseSection from '../components/ProductPage/WhyChooseSection';
 import LanguageBar from '../components/LanguageBar';
 import NavBar from '../components/NavBar';
-import DSeries from '../assets/images/d_series.jpg';
-import ESeries from '../assets/images/e_series.jpg';
-import MSeries from '../assets/images/5m_series.jpg';
-import SpecialtySeries from '../assets/images/special_series.jpg';
 import Footer from '../components/Footer';
-
-const tractorSeriesData = {
-    'd-series': {
-        name: 'D Series Tractor Models',
-        description: 'Explore our range of D Series tractors, engineered to meet diverse agricultural and haulage needs. From compact utility models to powerful performers, compare specs and find the tractor that fits your farm best.',
-        image: DSeries, 
-        models: [
-            { id: 'D3540', drive: '2WD', engineHP: '36 HP (26.8 kW)', transmission: '8+4, Collarshift', ptoOption: 'Standard', clutch: 'Single' },
-            { id: 'D3545', drive: '2WD & 4WD', engineHP: '40 HP (29.4 kW)', transmission: '8+4, Collarshift', ptoOption: 'Standard / Dual', clutch: 'Single / Dual' },
-            { id: 'D5350-Power-Pro', drive: '2WD', engineHP: '43 HP (30.6 kW)', transmission: '8+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-            { id: 'D5420-Power-Pro', drive: '2WD', engineHP: '44 HP (32.3 kW)', transmission: '8+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-            { id: 'D5450-Power-Pro', drive: '2WD & 4WD', engineHP: '46 HP (34.3 kW)', transmission: '8+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-        ]
-    },
-    'e-series': {
-        name: 'E Series Tractor Models',
-        description: 'Discover our E Series tractors, built for power and endurance to handle demanding agricultural tasks and large implements. These versatile machines deliver exceptional performance in all farming conditions.',
-        image: ESeries,
-        models: [
-            { id: 'E6040', drive: '2WD', engineHP: '48 HP (35.8 kW)', transmission: '12+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-            { id: 'E6045', drive: '2WD & 4WD', engineHP: '50 HP (37.3 kW)', transmission: '12+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-            { id: 'E6050', drive: '2WD & 4WD', engineHP: '55 HP (41.0 kW)', transmission: '12+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-            { id: 'E7060', drive: '2WD & 4WD', engineHP: '65 HP (48.5 kW)', transmission: '12+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-            { id: 'E7075', drive: '4WD', engineHP: '75 HP (56.0 kW)', transmission: '12+4, Collarshift', ptoOption: 'Standard / Dual / Reverse', clutch: 'Single / Dual' },
-        ]
-    },
-    '5m-series': {
-        name: '5M Series Tractor Models',
-        description: 'Our 5M Series represents India\'s largest tractors, equipped with state-of-the-art technology and immense power. These machines are designed for large scale operations and advanced equipment handling.',
-        image: MSeries,
-        models: [
-            { id: '5M-7580', drive: '4WD', engineHP: '80 HP (59.7 kW)', transmission: '16+8, Synchromesh', ptoOption: 'Standard / Dual / Reverse', clutch: 'Dual' },
-            { id: '5M-7590', drive: '4WD', engineHP: '90 HP (67.1 kW)', transmission: '16+8, Synchromesh', ptoOption: 'Standard / Dual / Reverse', clutch: 'Dual' },
-            { id: '5M-75100', drive: '4WD', engineHP: '100 HP (74.6 kW)', transmission: '16+8, Synchromesh', ptoOption: 'Standard / Dual / Reverse', clutch: 'Dual' },
-        ]
-    },
-    'specialty-series': {
-        name: 'Specialty Series Tractor Models',
-        description: 'Purpose-built for niche operations like orchard farming and intercultural work, our Specialty Series offers compact, efficient tractors designed to excel in specialized agricultural environments.',
-        image: SpecialtySeries,
-        models: [
-            { id: 'SP-O2530', drive: '2WD', engineHP: '30 HP (22.4 kW)', transmission: '8+2, Collarshift', ptoOption: 'Standard', clutch: 'Single' },
-            { id: 'SP-O2535', drive: '2WD & 4WD', engineHP: '35 HP (26.1 kW)', transmission: '8+2, Collarshift', ptoOption: 'Standard', clutch: 'Single' },
-            { id: 'SP-I2525', drive: '2WD', engineHP: '25 HP (18.6 kW)', transmission: '6+2, Collarshift', ptoOption: 'Standard', clutch: 'Single' },
-            { id: 'SP-I2530', drive: '2WD', engineHP: '30 HP (22.4 kW)', transmission: '6+2, Collarshift', ptoOption: 'Standard', clutch: 'Single' },
-        ]
-    }
-};
+import AllTractors from '../assets/data/AllTractors';
 
 const MobileTableRow = ({ model }) => {
     return (
@@ -100,9 +49,9 @@ const TractorCategory = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Simulate API call to fetch data
+        // Get data from centralized AllTractors source
         setTimeout(() => {
-            const data = tractorSeriesData[seriesId];
+            const data = AllTractors.getCategoryTableData(seriesId);
             setSeriesData(data);
             setLoading(false);
         }, 500);
@@ -132,6 +81,7 @@ const TractorCategory = () => {
         <div className="min-h-screen bg-gray-50">
             <LanguageBar />
             <NavBar />
+            
             {/* Hero Section */}
             <div className="relative px-10">
                 <div
@@ -198,6 +148,7 @@ const TractorCategory = () => {
             
             {/* Why Choose Section */}
             <WhyChooseSection />
+            
             {/* Footer */}
             <Footer />
         </div>

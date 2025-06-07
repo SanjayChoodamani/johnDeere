@@ -1,91 +1,16 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// Import your tractor images for carousel
-import DSeries from '../../assets/images/d_series.jpg';
-import ESeries from '../../assets/images/e_series.jpg';
-import MSeries from '../../assets/images/5m_series.jpg';
-import SpecialtySeries from '../../assets/images/special_series.jpg';
-
-// Import images for the second section
-import Tractor1 from '../../assets/images/tractor1.png';
-import Tractor2 from '../../assets/images/tractor2.png';
+import AllTractors from '../../assets/data/AllTractors';
 
 export default function AllProducts() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Carousel products data
-    const carouselProducts = [
-        {
-            id: 1,
-            name: "D Series",
-            hp: "36 HP - 50 HP",
-            image: DSeries,
-            description: "Compact utility tractor perfect for small farms",
-            categoryLink: "/tractor-category/d-series"
-        },
-        {
-            id: 2,
-            name: "E Series",
-            hp: "45 HP - 65 HP",
-            image: ESeries,
-            description: "Mid-range tractor for versatile farming operations",
-            categoryLink: "/tractor-category/e-series"
-        },
-        {
-            id: 3,
-            name: "5M Series",
-            hp: "75 HP - 120 HP",
-            image: MSeries,
-            description: "Heavy-duty tractor for large-scale farming",
-            categoryLink: "/tractor-category/5m-series"
-        },
-        {
-            id: 4,
-            name: "Specialty Series",
-            hp: "50 HP - 85 HP",
-            image: SpecialtySeries,
-            description: "Specialized tractors for unique applications",
-            categoryLink: "/tractor-category/specialty-series"
-        }
-    ];
+    const carouselProducts = AllTractors.getCarouselData();
 
     // Second section - Specific tractor models
-    const tractorModels = [
-        {
-            id: 1,
-            name: '5M Series Tractors',
-            power: 'Up to 120 HP',
-            description: 'Utility tractor with advanced technology',
-            image: Tractor1,
-            link: '/products'
-        },
-        {
-            id: 2,
-            name: 'Specialty Tractors',
-            power: '75 to 115 HP',
-            description: 'Perfect for vineyard and orchard farming',
-            image: Tractor2,
-            link: '/products'
-        },
-        {
-            id: 3,
-            name: '5M Series Tractors',
-            power: 'Up to 120 HP',
-            description: 'Utility tractor with advanced technology',
-            image: Tractor1,
-            link: '/products'
-        },
-        {
-            id: 4,
-            name: 'Specialty Tractors',
-            power: '75 to 115 HP',
-            description: 'Perfect for vineyard and orchard farming',
-            image: Tractor2,
-            link: '/products'
-        }
-    ];
+    const tractorModels = AllTractors.getFeaturedModels();
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => 
@@ -257,7 +182,7 @@ export default function AllProducts() {
                             </div>
 
                             {/* Mobile Product Info */}
-                            <div className="text-center mt-[0.5rem]">
+                            <div className="text-center mt-[-1rem]">
                                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                                     {carouselProducts[currentIndex].name}
                                 </h3>

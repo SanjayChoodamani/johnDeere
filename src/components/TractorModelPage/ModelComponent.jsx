@@ -7,6 +7,7 @@ import Footer from '../Footer';
 const ModelComponent = ({ model }) => {
     const [mainImage, setMainImage] = useState(model.images[0]);
     const [openFaqIndex, setOpenFaqIndex] = useState(null);
+    const [showAllSpecs, setShowAllSpecs] = useState(false);
 
     if (!model) return null;
 
@@ -83,13 +84,23 @@ const ModelComponent = ({ model }) => {
                         {/* Specifications Table */}
                         <div className="mb-8 rounded-lg overflow-hidden">
                             <div className="grid grid-cols-1">
-                                {Object.entries(model.specifications).map(([key, value], index) => (
+                                {Object.entries(model.specifications).slice(0, showAllSpecs ? undefined : 5).map(([key, value], index) => (
                                     <div key={key} className={`py-3 grid grid-cols-2 px-4 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                                         <div className="font-medium text-gray-800">{key}</div>
                                         <div className="text-gray-600">{value}</div>
                                     </div>
                                 ))}
                             </div>
+                            {Object.entries(model.specifications).length > 5 && (
+                                <div className="bg-gray-100 px-4 py-3 text-center">
+                                    <button
+                                        onClick={() => setShowAllSpecs(!showAllSpecs)}
+                                        className="text-green-600 hover:text-green-700 font-medium transition duration-300"
+                                    >
+                                        {showAllSpecs ? 'Show Less' : `Read More (${Object.entries(model.specifications).length - 5} more)`}
+                                    </button>
+                                </div>
+                            )}
                         </div>
 
                         {/* Action Buttons */}
