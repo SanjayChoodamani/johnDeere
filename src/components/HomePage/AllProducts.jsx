@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AllTractors from '../../assets/data/AllTractors';
 
 export default function AllProducts() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startPosition, setStartPosition] = useState(0);
+    const [currentTranslate, setCurrentTranslate] = useState(0);
+    const [prevTranslate, setPrevTranslate] = useState(0);
+    const [animationId, setAnimationId] = useState(null);
+    
+    const carouselRef = useRef(null);
+    const touchStartRef = useRef(null);
 
     // Carousel products data
     const carouselProducts = AllTractors.getCarouselData();
@@ -24,6 +32,10 @@ export default function AllProducts() {
         );
     };
 
+    const goToSlide = (index) => {
+        setCurrentIndex(index);
+    };
+
     const getSlideClass = (index) => {
         const diff = index - currentIndex;
         
@@ -37,6 +49,95 @@ export default function AllProducts() {
             return 'translate-x-96 scale-50 z-0 opacity-20';
         }
     };
+
+    // Touch/Mouse event handlers
+    const handleStart = (clientX) => {
+        setIsDragging(true);
+        setStartPosition(clientX);
+        setPrevTranslate(currentTranslate);
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+        }
+    };
+
+    const handleMove = (clientX) => {
+        if (!isDragging) return;
+        
+        const currentPosition = clientX;
+        const diff = currentPosition - startPosition;
+        setCurrentTranslate(prevTranslate + diff);
+    };
+
+    const handleEnd = () => {
+        if (!isDragging) return;
+        
+        setIsDragging(false);
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Determine if we should change slides based on movement
+        const threshold = 50;
+        if (movedBy < -threshold && currentIndex < carouselProducts.length - 1) {
+            nextSlide();
+        } else if (movedBy > threshold && currentIndex > 0) {
+            prevSlide();
+        } else if (movedBy < -threshold && currentIndex === carouselProducts.length - 1) {
+            setCurrentIndex(0);
+        } else if (movedBy > threshold && currentIndex === 0) {
+            setCurrentIndex(carouselProducts.length - 1);
+        }
+        
+        setCurrentTranslate(0);
+        setPrevTranslate(0);
+    };
+
+    // Mouse events
+    const handleMouseDown = (e) => {
+        handleStart(e.clientX);
+    };
+
+    const handleMouseMove = (e) => {
+        handleMove(e.clientX);
+    };
+
+    const handleMouseUp = () => {
+        handleEnd();
+    };
+
+    const handleMouseLeave = () => {
+        handleEnd();
+    };
+
+    // Touch events
+    const handleTouchStart = (e) => {
+        touchStartRef.current = e.touches[0].clientX;
+        handleStart(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        if (!touchStartRef.current) return;
+        handleMove(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        touchStartRef.current = null;
+        handleEnd();
+    };
+
+    // Add mouse event listeners
+    useEffect(() => {
+        const carousel = carouselRef.current;
+        if (!carousel) return;
+
+        if (isDragging) {
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+        }
+
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [isDragging, startPosition]);
 
     return (
         <div className="font-montserrat">
@@ -55,7 +156,15 @@ export default function AllProducts() {
 
                     {/* Desktop Carousel */}
                     <div className="hidden md:block relative">
-                        <div className="relative h-96 flex items-center justify-center">
+                        <div 
+                            ref={carouselRef}
+                            className="relative h-96 flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+                            onMouseDown={handleMouseDown}
+                            onMouseLeave={handleMouseLeave}
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
                             {/* Navigation Buttons */}
                             <button
                                 onClick={prevSlide}
@@ -76,13 +185,17 @@ export default function AllProducts() {
                                 {carouselProducts.map((product, index) => (
                                     <div
                                         key={product.id}
-                                        className={`absolute transition-all duration-700 ease-in-out transform ${getSlideClass(index)}`}
+                                        className={`absolute transition-all duration-700 ease-in-out transform ${getSlideClass(index)} ${
+                                            index !== currentIndex ? 'cursor-pointer' : ''
+                                        }`}
+                                        onClick={() => index !== currentIndex && goToSlide(index)}
                                     >
                                         <div className="w-72 h-72 flex items-center justify-center">
                                             <img
                                                 src={product.image}
                                                 alt={product.name}
-                                                className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
+                                                className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300 pointer-events-none"
+                                                draggable={false}
                                             />
                                         </div>
                                     </div>
@@ -127,7 +240,12 @@ export default function AllProducts() {
 
                     {/* Mobile Carousel */}
                     <div className="md:hidden">
-                        <div className="relative overflow-hidden">
+                        <div 
+                            className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
                             {/* Navigation Buttons */}
                             <button
                                 onClick={prevSlide}
@@ -167,13 +285,17 @@ export default function AllProducts() {
                                     return (
                                         <div
                                             key={product.id}
-                                            className={`absolute transition-all duration-500 ease-in-out transform ${transformClass} ${zIndex}`}
+                                            className={`absolute transition-all duration-500 ease-in-out transform ${transformClass} ${zIndex} ${
+                                                index !== currentIndex ? 'cursor-pointer' : ''
+                                            }`}
+                                            onClick={() => index !== currentIndex && goToSlide(index)}
                                         >
                                             <div className="w-48 h-48 flex items-center justify-center">
                                                 <img
                                                     src={product.image}
                                                     alt={product.name}
-                                                    className="w-full h-full object-contain"
+                                                    className="w-full h-full object-contain pointer-events-none"
+                                                    draggable={false}
                                                 />
                                             </div>
                                         </div>
@@ -216,16 +338,6 @@ export default function AllProducts() {
                             </div>
                         </div>
                     </div>
-
-                    {/* Bottom Call to Action */}
-                    {/* <div className="text-center mt-12">
-                        <Link
-                            to="/products"
-                            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-lg hover:shadow-xl inline-block"
-                        >
-                            Explore All Products
-                        </Link>
-                    </div> */}
                 </div>
             </div>
 

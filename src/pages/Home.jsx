@@ -5,10 +5,10 @@ import Footer from '../components/Footer'
 import HeroSection from '../components/HomePage/HeroSection'
 import AllProducts from '../components/HomePage/AllProducts'
 import FarmingSolutions from '../components/HomePage/FarmingSolutions'
-import JDLinkAppSection from '../components/HomePage/JDLinkAppSection'
 import ProductionSystemSolutions from '../components/HomePage/ProductionSystemSolutions'
 import FAQSection from '../components/HomePage/FAQSection'
 import AboutHero from '../components/AboutPage/AboutHero'
+import FeaturedVideoSection from '../components/HomePage/FeaturedVideoSection'
 
 const Home = () => {
     return (
@@ -19,7 +19,7 @@ const Home = () => {
         <AllProducts/>
         {/* <FarmingSolutions/> */}
         <AboutHero/>
-        <JDLinkAppSection/>
+        <FeaturedVideoSection/>
         <ProductionSystemSolutions/>
         <FAQSection/>
         <Footer/>
