@@ -353,7 +353,11 @@ export default function AllProducts() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {tractorModels.map((model) => (
-                            <div key={model.id} className="border border-blue-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <Link 
+                                key={model.id} 
+                                to={model.link}
+                                className="border border-blue-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                            >
                                 <div className="flex flex-col md:flex-row">
                                     <div className="md:w-1/2">
                                         <img
@@ -366,18 +370,15 @@ export default function AllProducts() {
                                         <h3 className="text-lg font-semibold text-gray-800 mb-2">{model.name}</h3>
                                         <p className="text-green-600 font-semibold text-sm mb-2">{model.power}</p>
                                         <p className="text-gray-600 text-sm mb-4">{model.description}</p>
-                                        <Link
-                                            to={model.link}
-                                            className="text-green-600 hover:text-green-700 inline-flex items-center gap-1 text-sm font-medium"
-                                        >
+                                        <div className="text-green-600 hover:text-green-700 inline-flex items-center gap-1 text-sm font-medium">
                                             Learn More
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                             </svg>
-                                        </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

@@ -105,10 +105,7 @@ const ModelComponent = ({ model }) => {
 
                         {/* Action Buttons */}
                         <div className="flex flex-wrap gap-4">
-                            <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300 shadow-md">
-                                Request a Quote
-                            </button>
-                            <button className="bg-white hover:bg-gray-100 text-green-600 font-medium py-2 px-6 rounded-md transition duration-300 shadow-md" onClick={() => window.open(model.brochureUrl, '_blank')}>
+                            <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300 shadow-md" onClick={() => window.open(model.brochureUrl, '_blank')}>
                                 Download Brochure
                             </button>
                         </div>
